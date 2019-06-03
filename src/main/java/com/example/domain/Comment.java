@@ -1,14 +1,24 @@
-package com.example.Domain;
+package com.example.domain;
 
+/**
+ * コメントを表すドメイン.
+ * 
+ * @author risa.nazato
+ *
+ */
 public class Comment {
+	/** ID */
 	private Integer id;
+	/** 名前 */
 	private String name;
+	/** コンテンツ */
 	private String content;
-	private Integer articled;
-	
+	/** 記事 */
+	private Integer articleId;
+
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", name=" + name + ", content=" + content + ", articled=" + articled + "]";
+		return "Comment [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
 	}
 
 	public Integer getId() {
@@ -35,14 +45,12 @@ public class Comment {
 		this.content = content;
 	}
 
-	public Integer getArticled() {
-		return articled;
+	public Integer getArticleId() {
+		return articleId;
 	}
 
-	public void setArticled(Integer articled) {
-		this.articled = articled;
+	public void setArticleId(Integer articled) {
+		this.articleId = articled;
 	}
-	
-	
-	
+
 }
