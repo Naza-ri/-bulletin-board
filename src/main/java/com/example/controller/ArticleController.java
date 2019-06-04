@@ -106,8 +106,8 @@ public class ArticleController {
 	 * @return 掲示板画面
 	 */
 	@RequestMapping("/deletearticle")
-	public String deleteArticle(Article article) {
-		articleService.deleteById(article.getId());
+	public String deleteArticle(ArticleForm form) {
+		articleService.deleteById(form.getId());
 		return "redirect:/bulletin-board";
 	}
 }

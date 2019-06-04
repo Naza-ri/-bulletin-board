@@ -56,20 +56,22 @@ public class CommentRepository {
 	 * 
 	 * @param comment コメント
 	 */
-	public void insert(Comment comment) {
+	public Comment insert(Comment comment) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(comment);
 		String sql = "INSERT INTO comments(name, content, article_id) VALUES(:name, :content, :articleId)";
 		template.update(sql, param);
+		return comment;
 	}
+	
 
 	/**
-	 * 記事の削除.
+	 * コメントの削除.
 	 * 
 	 * @param articleId
 	 */
 	public void deleteByArticleId(int articleId) {
 		SqlParameterSource sqlparam = new MapSqlParameterSource().addValue("id", articleId);
-		String deleteSql = "DELETE FROM comments WHERE id=:id";
+		String deleteSql = "DELETE FROM comments WHERE id=:article_id";
 		template.update(deleteSql, sqlparam);
 	}
 

@@ -28,10 +28,23 @@ public class CommentService {
 	public void insert(Comment comment) {
 		commentRepository.insert(comment);
 	}
-	
+
+	/**
+	 * コメントの表示.
+	 * 
+	 * @param articleId 記事ID
+	 * @return
+	 */
 	public List<Comment> findByArticleId(int articleId) {
 		return commentRepository.findByArticleId(articleId);
 	}
-}
 
-	
+	/**
+	 * コメントを削除.
+	 * 
+	 * @param articleId 記事ID
+	 */
+	public void deleteByArticleId(int articleId) {
+		commentRepository.deleteByArticleId(articleId);
+	}
+}

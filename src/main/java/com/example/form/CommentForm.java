@@ -10,17 +10,17 @@ package com.example.form;
 public class CommentForm {
 
 	/** 記事のID */
-	private String articleId;
+	private Integer articleId;
 	/** 名前 */
 	private String name;
 	/** コンテント */
 	private String content;
 
-	public String getArticleId() {
+	public Integer getArticleId() {
 		return articleId;
 	}
 
-	public void setArticleId(String articleId) {
+	public void setArticleId(Integer articleId) {
 		this.articleId = articleId;
 	}
 

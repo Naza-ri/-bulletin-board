@@ -1,9 +1,6 @@
 package com.example.repository;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import javax.xml.stream.events.Comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.Article;
 
 /**
- *articlesテーブルを処理するリポジトリ.
+ * articlesテーブルを処理するリポジトリ.
  * 
  * @author risa.nazato
  *
@@ -41,7 +38,9 @@ public class ArticleRepository {
 	 * @return 全記事一覧
 	 */
 	public List<Article> findAll() {
+		//テーブル分割
 		String sql = "SELECT id,name,content FROM articles ORDER BY id DESC;";
+		//テーブル結合(中級問題・記事一括表示)
 //		String sql = "SELECT a.id,a.name,a.content,c.id,c.name,c.content,c.article_id "
 //				+ "FROM articles a INNER JOIN comments c ON a.id = c.article_id ORDER BY a.id DESC, a.id;";
 
@@ -57,12 +56,11 @@ public class ArticleRepository {
 	 * @return 記事
 	 */
 	public Article insert(Article article) {
-			SqlParameterSource param = new BeanPropertySqlParameterSource(article);
-			String sql = "INSERT INTO articles(name, content) VALUES(:name, :content)";
-			template.update(sql, param);
-			return article;
-		}
-	
+		SqlParameterSource param = new BeanPropertySqlParameterSource(article);
+		String sql = "INSERT INTO articles(name, content) VALUES(:name, :content)";
+		template.update(sql, param);
+		return article;
+	}
 
 	/**
 	 * 主キーを使って１件の記事情報を削除する.
@@ -70,8 +68,8 @@ public class ArticleRepository {
 	 * @param id ID
 	 */
 	public void deleteById(int id) {
-		SqlParameterSource sqlparam = new MapSqlParameterSource().addValue("id", id);
-		String deleteSql = "DELETE FROM articles WHERE id=:id";
-		template.update(deleteSql, sqlparam);
+		String sql = "DELETE FROM articles WHERE id=:id";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		template.update(sql, param);
 	}
 }
