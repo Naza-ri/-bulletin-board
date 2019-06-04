@@ -61,11 +61,13 @@ public class ArticleController {
 	@RequestMapping("")
 	public String index(Model model) {
 		List<Article> articleList = articleService.findAll();
-		for(int i=0; i< articleList.size(); i++) {
-			List<Comment> commentList = commentService.findByArticleId(articleList.get(i).getId());
-			articleList.get(i).setCommentList(commentList);
-		}
+//		初級問題
+//		for(int i=0; i< articleList.size(); i++) {
+//			List<Comment> commentList = commentService.findByArticleId(articleList.get(i).getId());
+//			articleList.get(i).setCommentList(commentList);
+//		}
 		model.addAttribute("articleList", articleList);
+		
 		return "article";
 	}
 
