@@ -102,12 +102,12 @@ public class ArticleController {
 	 * 
 	 * 記事の削除.
 	 * 
-	 * @param article 記事
+	 * @param id 記事ID
 	 * @return 掲示板画面
 	 */
 	@RequestMapping("/deletearticle")
-	public String deleteArticle(ArticleForm form) {
-		articleService.deleteById(form.getId());
+	public String deleteArticle(Integer id) {
+		articleService.deleteArticleAndComment(id);
 		return "redirect:/bulletin-board";
 	}
 }

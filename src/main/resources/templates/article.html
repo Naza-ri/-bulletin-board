@@ -19,7 +19,7 @@
 	<div th:each="article:${articleList}">
 		投稿者名：<span th:text="${article.name}">名無し</span><br>
 		投稿内容：<span th:text="${article.content}">投稿内容</span><br>
-		<form th:action="@{/bulletin-board/deletearticle}" th:object="${ArticleForm}" method="post">
+		<form th:action="@{/bulletin-board/deletearticle}" method="post">
 			<input type="hidden" name="id" th:value="${article.id}">
 			<input type="submit" value="記事削除">
 		</form>

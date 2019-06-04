@@ -38,7 +38,7 @@ public class ArticleRepository {
 	 * @return 全記事一覧
 	 */
 	public List<Article> findAll() {
-		//テーブル分割
+		//テーブル分割(初級)
 		String sql = "SELECT id,name,content FROM articles ORDER BY id DESC;";
 		//テーブル結合(中級問題・記事一括表示)
 //		String sql = "SELECT a.id,a.name,a.content,c.id,c.name,c.content,c.article_id "
